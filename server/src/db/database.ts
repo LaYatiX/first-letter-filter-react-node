@@ -3,9 +3,12 @@ import { WeatherDB } from "../models/Weather";
 export let db: WeatherDB;
 
 export const connect = async (callback: (error?: Error) => void) => {
-  fetch(
-    "https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=b6907d289e10d714a6e88b30761fae22"
-  )
+  if (!process.env.DB_URL) {
+    console.error(`DB_URL environment variable is not set.`);
+    process.exit(1);
+  }
+
+  fetch(process.env.DB_URL)
     .then((data) => data.json())
     .then((data) => {
       db = data;

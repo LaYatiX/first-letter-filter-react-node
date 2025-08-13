@@ -1,3 +1,11 @@
+Tested on 
+
+```
+node@20.11.1
+npm@10.2.2
+```
+
+Startup instructions:
 ```
 cd client
 npm ci

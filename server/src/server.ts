@@ -5,8 +5,9 @@ import app from "./app";
 const PORT = 5000;
 
 // === Connect to DB ===
-connect((err) => {
-  if (err) {
+connect((error) => {
+  if (error) {
+    console.error(`Error connecting to the database: ${error}`);
     process.exit(1);
   }
   console.log(`DB Initialized`);
@@ -15,6 +16,7 @@ connect((err) => {
 // === Start the Server ===
 app.listen(PORT, (error) => {
   if (error) {
+    console.error(`Error starting app: ${error}`);
     process.exit(1);
   }
 
